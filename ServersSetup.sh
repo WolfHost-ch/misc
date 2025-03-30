@@ -351,7 +351,7 @@ installing_tailscale() {
         fi
     done
 
-    sudo tailscale up --auth-key="$TAILSCALE_AUTH_KEY" > /dev/null 2>&1
+    sudo tailscale up --advertise-tags=tag:wh --auth-key="$TAILSCALE_AUTH_KEY" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "\e[32mOK\e[0m"
     else
