@@ -211,7 +211,7 @@ downloading_docker() {
 # Install docker
 installing_docker() {
     echo -n "Installing Docker... "
-    sudo apt-get install docker-ce glusterfs-client docker-compose-plugin -y > /dev/null 2>&1
+    sudo apt-get install docker-ce docker-compose-plugin -y > /dev/null 2>&1
     sudo usermod -aG docker $USER > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "\e[32mOK\e[0m"
@@ -315,7 +315,6 @@ connect_storage() {
         return
     fi
 
-# sudo mount -t glusterfs "storage1:storage2:storage3:/gv0" /mnt/dockerdata
     echo -n "Connecting to storage... "
     sudo mount -t glusterfs "storage1:storage2:/gv0" /mnt/dockerdata > /dev/null 2>&1
     if ! grep -q "storage1:storage2:/gv0 /mnt/dockerdata glusterfs defaults,_netdev 0 0" /etc/fstab; then
@@ -386,6 +385,8 @@ main() {
     auto_removing_packages
     sync_time
     adding_aliases
+    downloading_docker
+    installing_docker
     check_required_packages
     installing_tailscale
     select_machine_type
@@ -393,21 +394,17 @@ main() {
     # Handle different setups based on the user's input
     case $MACHINE_TYPE in
         manager)
-            downloading_docker
-            installing_docker
-            create_storage
-            connect_storage
+            # create_storage // TODO: refactor with cephFs
+            # connect_storage // TODO: refactor with cephFs
             # tailscale_manager_subnet
             # installing_keepalived
             ;;
         worker)
-            downloading_docker
-            installing_docker
-            create_storage
-            connect_storage
+            # create_storage // TODO: refactor with cephFs
+            # connect_storage // TODO: refactor with cephFs
             ;;
         storage)
-            setup_glusterfs
+            # setup_glusterfs // TODO: refactor with cephFs
             ;;
         *)
     esac
