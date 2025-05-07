@@ -8,7 +8,6 @@ PACKAGES=(
     "vim"
     "npm"
     "ntp"
-    "gnu"
     "nano"
     "curl"
     "htop"
