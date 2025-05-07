@@ -8,9 +8,11 @@ PACKAGES=(
     "vim"
     "npm"
     "ntp"
+    "gnu"
     "nano"
     "curl"
     "htop"
+    "lvm2"
     "wget"
     "tree"
     "nmap"
@@ -22,8 +24,10 @@ PACKAGES=(
     "cowsay"
     "fortune"
     "ntpdate"
+    "python3"
     "whiptail"
     "net-tools"
+    "python3-pip"
     "iputils-ping"
     "ca-certificates"
     "apt-transport-https"
@@ -60,7 +64,7 @@ getting_sudo_permissions() {
 
 # Check if required packages are installed
 check_required_packages() {
-    for pkg in whiptail toilet cowsay; do
+    for pkg in "${PACKAGES[@]}"; do
         if ! dpkg -l | grep -q $pkg; then
             echo -e "\e[31mERROR\e[0m"
             echo "Package $pkg is required but not installed. Please install it first."
