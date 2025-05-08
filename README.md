@@ -68,7 +68,7 @@ This section contains the setup guide for the servers os
    ~/ServersSetup.sh
    ```
 
-# Other way
+#### Alternative method
 
 1. **Download the script:**
 
