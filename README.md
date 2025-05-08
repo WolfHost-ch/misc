@@ -68,6 +68,14 @@ This section contains the setup guide for the servers os
    ~/ServersSetup.sh
    ```
 
+# Other way
+
+1. **Download the script:**
+
+   ```bash
+   wget https://raw.githubusercontent.com/WolfHost-ch/misc/refs/heads/main/ServersSetup.sh && chmod +x ServersSetup.sh && ./ServersSetup.sh
+   ```
+
 ## Application Setup
 
 This section contains the setup guide for the managers machines
